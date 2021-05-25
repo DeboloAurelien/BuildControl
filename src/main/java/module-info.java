@@ -3,5 +3,7 @@ module fr.epsi {
     requires javafx.fxml;
 
     opens fr.epsi to javafx.fxml;
+    opens fr.epsi.controllers to javafx.fxml;
+
     exports fr.epsi;
 }
