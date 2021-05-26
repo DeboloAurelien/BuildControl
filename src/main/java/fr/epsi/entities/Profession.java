@@ -6,6 +6,7 @@ public class Profession {
     private Long id;
     private String label;
     private List<Subcontractor> subcontractors;
+    private List<User> users;
 
     public Long getId() {
         return id;
@@ -31,6 +32,15 @@ public class Profession {
 
     public Profession setSubcontractors(List<Subcontractor> subcontractors) {
         this.subcontractors = subcontractors;
+        return this;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public Profession setUsers(List<User> users) {
+        this.users = users;
         return this;
     }
 }

@@ -14,6 +14,7 @@ public class Demand {
     private Project project;
     private List<User> users;
     private List<Subcontractor> subcontractors;
+    private List<Media> medias;
 
     public String getId() {
         return id;
@@ -102,6 +103,15 @@ public class Demand {
 
     public Demand setSubcontractors(List<Subcontractor> subcontractors) {
         this.subcontractors = subcontractors;
+        return this;
+    }
+
+    public List<Media> getMedias() {
+        return medias;
+    }
+
+    public Demand setMedias(List<Media> medias) {
+        this.medias = medias;
         return this;
     }
 }

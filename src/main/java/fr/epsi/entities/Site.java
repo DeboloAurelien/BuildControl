@@ -6,6 +6,7 @@ public class Site {
     private Long id;
     private String name;
     private List<User> users;
+    private List<Site> sites;
 
     public Long getId() {
         return id;
@@ -31,6 +32,15 @@ public class Site {
 
     public Site setUsers(List<User> users) {
         this.users = users;
+        return this;
+    }
+
+    public List<Site> getSites() {
+        return sites;
+    }
+
+    public Site setSites(List<Site> sites) {
+        this.sites = sites;
         return this;
     }
 }
