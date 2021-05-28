@@ -1,10 +1,13 @@
 package fr.epsi.entities;
 
+import java.sql.Date;
 import java.util.List;
 
 public class Project {
     private Long id;
     private String name;
+    private Date startDate;
+    private Date endDate;
     private Site site;
     private List<Demand> demands;
 
@@ -23,6 +26,24 @@ public class Project {
 
     public Project setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Project setStartDate(Date startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public Project setEndDate(Date endDate) {
+        this.endDate = endDate;
         return this;
     }
 
