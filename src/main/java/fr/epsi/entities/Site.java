@@ -6,7 +6,7 @@ public class Site {
     private Long id;
     private String name;
     private List<User> users;
-    private List<Site> sites;
+    private List<Project> projects;
 
     public Long getId() {
         return id;
@@ -35,12 +35,12 @@ public class Site {
         return this;
     }
 
-    public List<Site> getSites() {
-        return sites;
+    public List<Project> getProjects() {
+        return projects;
     }
 
-    public Site setSites(List<Site> sites) {
-        this.sites = sites;
+    public Site setProjects(List<Project> projects) {
+        this.projects = projects;
         return this;
     }
 }

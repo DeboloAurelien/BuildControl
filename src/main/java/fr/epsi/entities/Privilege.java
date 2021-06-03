@@ -1,11 +1,11 @@
 package fr.epsi.entities;
 
-import java.util.Set;
+import java.util.List;
 
 public class Privilege {
     private Long id;
     private String label;
-    private Set<Role> roles;
+    private List<Role> roles;
 
     public Long getId() {
         return id;
@@ -25,11 +25,11 @@ public class Privilege {
         return this;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public Privilege setRoles(Set<Role> roles) {
+    public Privilege setRoles(List<Role> roles) {
         this.roles = roles;
         return this;
     }
