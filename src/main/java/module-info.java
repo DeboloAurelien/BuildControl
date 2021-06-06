@@ -7,4 +7,5 @@ module fr.epsi {
     opens fr.epsi.controllers to javafx.fxml;
 
     exports fr.epsi;
+    exports fr.epsi.repositories;
 }
