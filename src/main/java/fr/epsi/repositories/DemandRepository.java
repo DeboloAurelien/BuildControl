@@ -50,8 +50,6 @@ public class DemandRepository implements Repository<Demand, String> {
 
     @Override
     public Demand create(Demand demand) throws SQLException {
-        System.out.println(demand.getDemandDate());
-
         try (Connection connection = DBConnection.getInstance().getConnection();
              PreparedStatement ps = connection.prepareStatement(
                      "INSERT INTO bc_demand VALUES (?,?,?,?,?,?,?,?);",
