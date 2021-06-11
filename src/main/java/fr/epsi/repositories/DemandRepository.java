@@ -71,8 +71,12 @@ public class DemandRepository implements Repository<Demand, String> {
             }
         }
 
-        insertUsers(demand);
-        insertSubcontractors(demand);
+        if (demand.getUsers() != null) {
+            insertUsers(demand);
+        }
+        if (demand.getSubcontractors() != null) {
+            insertSubcontractors(demand);
+        }
 
         return findById(demand.getId());
     }
@@ -146,14 +150,14 @@ public class DemandRepository implements Repository<Demand, String> {
         return demand;
     }
 
-    public List<Demand> getDemandsAfterDate(Date date) throws SQLException {
+    public List<Demand> getDemandsAfterDate(Timestamp date) throws SQLException {
         ResultSet rs = null;
 
         try (Connection connection = DBConnection.getInstance().getConnection();
              PreparedStatement ps = connection.prepareStatement(
                      "EXEC GetDemandsAfterDate @date = ?;"))
         {
-            ps.setString(1, date.toString());
+            ps.setTimestamp(1, date);
             rs = ps.executeQuery();
             List<Demand> demands = new ArrayList<>();
 
