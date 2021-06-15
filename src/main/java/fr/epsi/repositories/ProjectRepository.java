@@ -3,6 +3,7 @@ package fr.epsi.repositories;
 import fr.epsi.DBConnection;
 import fr.epsi.entities.Demand;
 import fr.epsi.entities.Project;
+import fr.epsi.entities.ProjectSubcontractor;
 import fr.epsi.entities.Site;
 
 import java.sql.*;
@@ -107,6 +108,69 @@ public class ProjectRepository implements Repository<Project, Long> {
         {
             ps.setLong(1, project.getId());
             ps.executeUpdate();
+        }
+    }
+
+    public Long getNbFinishedProject(int year, int month) throws SQLException {
+        ResultSet rs = null;
+
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement ps = connection.prepareStatement("EXEC NbFinishedProject @year = ?, @month = ?;"))
+        {
+            ps.setLong(1, year);
+            ps.setLong(2, month);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getLong(1);
+            }
+
+            throw new SQLException("ProjectRepository - getNbProjectsFinished - no result");
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+        }
+    }
+
+    public Long getNbFinishedProjectPeriod(Timestamp startDate, Timestamp endDate) throws SQLException {
+        ResultSet rs = null;
+
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement ps = connection.prepareStatement(
+                     "EXEC NbFinishedProjectPeriod @startDate = ?, @endDate = ?;"))
+        {
+            ps.setTimestamp(1, startDate);
+            ps.setTimestamp(2, endDate);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getLong(1);
+            }
+
+            throw new SQLException("ProjectRepository - getNbProjectsFinished - no result");
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+        }
+    }
+
+    public List<ProjectSubcontractor> getNbSubcontractorByProject() throws SQLException {
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement ps = connection.prepareStatement("EXEC NbSubcontractorByProject;");
+             ResultSet rs = ps.executeQuery())
+        {
+            List<ProjectSubcontractor> projects = new ArrayList<>();
+
+            while (rs.next()) {
+                projects.add(new ProjectSubcontractor()
+                        .setName(rs.getString("name"))
+                        .setLabel(rs.getString("label"))
+                        .setNbSubcontractors(rs.getLong("nombre de sous-traitant")));
+            }
+
+            return projects;
         }
     }
 

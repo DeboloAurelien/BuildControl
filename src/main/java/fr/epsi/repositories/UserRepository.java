@@ -121,6 +121,23 @@ public class UserRepository implements Repository<User, Long> {
         }
     }
 
+    public int login(User user) throws SQLException {
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement ps = connection.prepareStatement("EXEC Connexion @username = ?, @password = ?;"))
+        {
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPasswordHash());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+
+            return 0;
+        }
+    }
+
     @Override
     public User setData(ResultSet rs) throws SQLException {
         User user = new User()
