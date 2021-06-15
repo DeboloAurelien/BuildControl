@@ -8,6 +8,7 @@ public class User {
     private String username;
     private String passwordHash;
     private Timestamp dateLastConnection;
+    private Timestamp dateChangePassword;
     private Long numberConnectionAttempt;
     private String lastname;
     private String firstname;
@@ -50,6 +51,15 @@ public class User {
 
     public User setDateLastConnection(Timestamp dateLastConnection) {
         this.dateLastConnection = dateLastConnection;
+        return this;
+    }
+
+    public Timestamp getDateChangePassword() {
+        return dateChangePassword;
+    }
+
+    public User setDateChangePassword(Timestamp dateChangePassword) {
+        this.dateChangePassword = dateChangePassword;
         return this;
     }
 

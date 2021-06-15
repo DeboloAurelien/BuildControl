@@ -42,6 +42,9 @@ public class UserController {
             return null;
         });
 
+        TableColumn<User, String> dateChangePasswords = new TableColumn<>("Date modif MDP");
+        dateChangePasswords.setCellValueFactory(cd -> new SimpleStringProperty(String.valueOf(cd.getValue().getDateChangePassword().toString())));
+
         TableColumn<User, String> numberConnectionAttempts = new TableColumn<>("Nom");
         numberConnectionAttempts.setCellValueFactory(cd -> new SimpleStringProperty(String.valueOf(cd.getValue().getNumberConnectionAttempt())));
 
@@ -70,8 +73,8 @@ public class UserController {
 
         tableUser.getColumns().setAll(
                 ids,usernames,passwords,dateLastConnections,
-                numberConnectionAttempts,lastnames,firstnames,
-                archives,professions,roles,demands,sites);
+                dateChangePasswords,numberConnectionAttempts,lastnames,
+                firstnames,archives,professions,roles,demands,sites);
         tableUser.setItems(userData);
     }
 
