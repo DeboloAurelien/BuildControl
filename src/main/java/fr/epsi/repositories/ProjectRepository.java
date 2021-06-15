@@ -138,7 +138,7 @@ public class ProjectRepository implements Repository<Project, Long> {
 
         try (Connection connection = DBConnection.getInstance().getConnection();
              PreparedStatement ps = connection.prepareStatement(
-                     "EXEC NbFinishedProjectPeriod @startDate = ?, @endDate = ?;"))
+                     "SELECT dbo.getNbFinishedProjectPeriod (?,?);"))
         {
             ps.setTimestamp(1, startDate);
             ps.setTimestamp(2, endDate);

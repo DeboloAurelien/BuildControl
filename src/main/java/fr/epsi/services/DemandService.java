@@ -42,13 +42,14 @@ public class DemandService {
 
     public DemandInfo setInfoData(ResultSet rs) throws SQLException {
         return new DemandInfo()
+                .setId(rs.getString("id"))
                 .setDemandDate(rs.getTimestamp("demand_date"))
-                .setProjectName(rs.getString(2))
-                .setSiteName(rs.getString(3))
+                .setProjectName(rs.getString("project_name"))
+                .setSiteName(rs.getString("site_name"))
                 .setUsername(rs.getString("username"))
-                .setUserProfessionLabel(rs.getString(5))
-                .setSubcontractorName(rs.getString(6))
-                .setSubcontractorProfessionLabel(rs.getString(7))
+                .setUserProfession(rs.getString("user_profession"))
+                .setSubcontractorName(rs.getString("subcontractor_name"))
+                .setSubcontractorProfession(rs.getString("subcontractor_profession"))
                 .setPath(rs.getString("path"));
     }
 }
