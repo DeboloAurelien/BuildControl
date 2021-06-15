@@ -145,6 +145,7 @@ public class UserRepository implements Repository<User, Long> {
                 .setUsername(rs.getString("username"))
                 .setPasswordHash(rs.getString("password_hash"))
                 .setDateLastConnection(rs.getTimestamp("date_last_connection"))
+                .setDateLastConnection(rs.getTimestamp("date_change_password"))
                 .setNumberConnectionAttempt(rs.getLong("number_connection_attempt"))
                 .setFirstname(rs.getString("firstname"))
                 .setLastname(rs.getString("lastname"))

@@ -81,6 +81,7 @@ public class UserRepositoryTest {
         assertThat(newUser.getPasswordHash()).isNotNull();
         assertThat(newUser.getPasswordHash()).isNotEqualTo("password");
         assertThat(newUser.getDateLastConnection()).isNull();
+        assertThat(newUser.getDateChangePassword()).isNotNull();
         assertThat(newUser.getNumberConnectionAttempt()).isEqualTo(0);
         assertThat(newUser.getArchive()).isFalse();
 
