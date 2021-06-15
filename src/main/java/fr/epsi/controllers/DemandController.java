@@ -81,7 +81,7 @@ public class DemandController implements Initializable {
             List<DemandInfo> demands = demandService.getDemandInfo(demandId);
 
             TableColumn<DemandInfo, String> ids = new TableColumn<>("Référence");
-            ids.setCellValueFactory(cd -> new SimpleStringProperty(demandId));
+            ids.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getId()));
 
             TableColumn<DemandInfo, String> demandDates = new TableColumn<>("Date de demande");
             demandDates.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getDemandDate().toString()));
@@ -96,13 +96,13 @@ public class DemandController implements Initializable {
             usernames.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getUsername()));
 
             TableColumn<DemandInfo, String> userProfessions = new TableColumn<>("Corps métier utilisateur");
-            userProfessions.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getUserProfessionLabel()));
+            userProfessions.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getUserProfession()));
 
             TableColumn<DemandInfo, String> subcontractors = new TableColumn<>("Sous-traitant");
             subcontractors.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getSubcontractorName()));
 
             TableColumn<DemandInfo, String> subcontractorProfessions = new TableColumn<>("Corps métier sous-traitant");
-            subcontractorProfessions.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getSubcontractorProfessionLabel()));
+            subcontractorProfessions.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getSubcontractorProfession()));
 
             TableColumn<DemandInfo, String> paths = new TableColumn<>("Capture");
             paths.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getPath()));

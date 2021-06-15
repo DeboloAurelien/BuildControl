@@ -3,14 +3,24 @@ package fr.epsi.entities;
 import java.sql.Timestamp;
 
 public class DemandInfo {
+    private String id;
     private Timestamp demandDate;
     private String projectName;
     private String siteName;
     private String username;
-    private String userProfessionLabel;
+    private String userProfession;
     private String subcontractorName;
-    private String subcontractorProfessionLabel;
+    private String subcontractorProfession;
     private String path;
+
+    public String getId() {
+        return id;
+    }
+
+    public DemandInfo setId(String id) {
+        this.id = id;
+        return this;
+    }
 
     public Timestamp getDemandDate() {
         return demandDate;
@@ -48,12 +58,12 @@ public class DemandInfo {
         return this;
     }
 
-    public String getUserProfessionLabel() {
-        return userProfessionLabel;
+    public String getUserProfession() {
+        return userProfession;
     }
 
-    public DemandInfo setUserProfessionLabel(String userProfessionLabel) {
-        this.userProfessionLabel = userProfessionLabel;
+    public DemandInfo setUserProfession(String userProfession) {
+        this.userProfession = userProfession;
         return this;
     }
 
@@ -66,12 +76,12 @@ public class DemandInfo {
         return this;
     }
 
-    public String getSubcontractorProfessionLabel() {
-        return subcontractorProfessionLabel;
+    public String getSubcontractorProfession() {
+        return subcontractorProfession;
     }
 
-    public DemandInfo setSubcontractorProfessionLabel(String subcontractorProfessionLabel) {
-        this.subcontractorProfessionLabel = subcontractorProfessionLabel;
+    public DemandInfo setSubcontractorProfession(String subcontractorProfession) {
+        this.subcontractorProfession = subcontractorProfession;
         return this;
     }
 

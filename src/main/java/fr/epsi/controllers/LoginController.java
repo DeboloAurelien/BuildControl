@@ -23,8 +23,12 @@ public class LoginController {
                 .setUsername(username.getText())
                 .setPasswordHash(password.getText());
 
-        if (userService.login(user) == 1) {
+        int response = userService.login(user);
+
+        if (response == 1) {
             resultLogin.setText("Connexion établie.");
+        } else if (response == -1) {
+            resultLogin.setText("Votre compte a été bloqué suite à 3 tentatives de connexion. Veuillez contacter le support informatique");
         } else {
             resultLogin.setText("Nom d'utilisateur ou mot de passe érroné !");
         }

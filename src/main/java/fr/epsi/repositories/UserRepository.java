@@ -253,7 +253,7 @@ public class UserRepository implements Repository<User, Long> {
             ps.setString(2, oldPassword);
             ps.setString(3, user.getPasswordHash());
 
-            ps.executeUpdate();
+            ps.executeQuery();
         }
         return findById(user.getId());
     }
